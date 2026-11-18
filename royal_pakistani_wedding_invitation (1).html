@@ -1,0 +1,2328 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Royal Wedding Invitation | Hamza & Zainab</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Amiri (Arabic Calligraphy), Cinzel Decorative (Royal Headers), Great Vibes (Script), Cormorant Garamond (Formal Serif), Plus Jakarta Sans (Clean UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            emeraldRoyal: {
+              950: '#02140f',
+              900: '#041f18',
+              800: '#083327',
+              700: '#0d4736',
+              600: '#145e48',
+            },
+            goldAntique: {
+              100: '#fbf3d5',
+              200: '#f5e29f',
+              300: '#e8c766',
+              400: '#d4af37',
+              500: '#aa8020',
+              600: '#7a5910',
+            },
+            ivorySilk: {
+              50: '#fffdf9',
+              100: '#fcf8f0',
+              200: '#f4ecdc',
+              300: '#e7dac0',
+            },
+            maroonRoyal: {
+              900: '#3d0910',
+              800: '#5e111b',
+              700: '#7c1926',
+            }
+          },
+          fontFamily: {
+            arabic: ['Amiri', 'serif'],
+            royal: ['"Cinzel Decorative"', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            serifFormal: ['"Cormorant Garamond"', 'serif'],
+            sansUI: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            royalCard: '0 25px 60px -15px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(212, 175, 55, 0.35)',
+            goldGlow: '0 0 25px rgba(212, 175, 55, 0.45)',
+            waxSeal: '0 12px 30px rgba(0, 0, 0, 0.65), inset 0 2px 6px rgba(255, 248, 214, 0.7), inset 0 -4px 10px rgba(105, 72, 8, 0.85)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Base Royal Velvet Backdrop & Subtle Mughal Damask Pattern */
+    body {
+      background-color: #041f18;
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.14) 0%, transparent 60%),
+        radial-gradient(circle at 50% 100%, rgba(13, 71, 54, 0.45) 0%, #02140f 100%);
+      color: #fcf8f0;
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Ivory Silk Paper Grain for the Main Card */
+    .ivory-silk-paper {
+      background-color: #fcf8f0;
+      background-image:
+        radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 0),
+        radial-gradient(rgba(8, 51, 39, 0.04) 1px, #fcf8f0 0);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+    }
+
+    /* Gold Foil Shimmer Text Effect */
+    .gold-foil-text {
+      background: linear-gradient(
+        115deg,
+        #aa8020 0%,
+        #d4af37 25%,
+        #fff1b8 48%,
+        #d4af37 70%,
+        #966d14 100%
+      );
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: goldShimmer 5s linear infinite;
+    }
+
+    @keyframes goldShimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 220% center; }
+    }
+
+    /* Wax Seal Pulse Ring */
+    @keyframes sealPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.55), 0 14px 32px rgba(0, 0, 0, 0.7);
+      }
+      50% {
+        transform: scale(1.035);
+        box-shadow: 0 0 0 14px rgba(212, 175, 55, 0), 0 18px 38px rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    .wax-seal-btn {
+      background: radial-gradient(circle at 32% 28%, #fff1b8 0%, #e4c05a 28%, #c29727 68%, #855e10 100%);
+      animation: sealPulse 2.8s ease-in-out infinite;
+    }
+
+    /* Envelope Gatefold Opening Transition */
+    #entrance-overlay {
+      transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 1.05s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.95s;
+    }
+    #entrance-overlay.opened {
+      opacity: 0;
+      transform: scale(1.06) translateY(-18px);
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Scratch Canvas Critical Touch Handling */
+    .scratch-canvas {
+      touch-action: none; /* Prevents vertical scrolling while scratching on mobile */
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: crosshair;
+      transition: opacity 0.65s ease-out;
+    }
+
+    .scratch-canvas.revealed {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Subtle Reveal Animation for Main Content */
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.85s ease-out, transform 0.85s ease-out;
+    }
+    .reveal-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Wrong Password Shake Animation */
+    @keyframes shakeModal {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    .animate-shake {
+      animation: shakeModal 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    /* Custom Thin Scrollbar for Modal & Drawer */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #041f18;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #aa8020;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-goldAntique-400 selection:text-emeraldRoyal-950">
+
+  <!-- Ambient Floating Golden Dust Particles Canvas -->
+  <canvas id="gold-dust-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-10"></canvas>
+
+  <!-- Confetti Burst Canvas (Triggers on Scratch Reveal) -->
+  <canvas id="confetti-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-50"></canvas>
+
+  <!-- Toast Notification Banner (Replaces alert/confirm) -->
+  <div id="toast-banner" class="fixed top-5 left-1/2 -translate-x-1/2 z-[100] pointer-events-none opacity-0 -translate-y-4 transition-all duration-300 w-[92%] max-w-md">
+    <div class="bg-emeraldRoyal-900/95 backdrop-blur-md border border-goldAntique-400/70 text-ivorySilk-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
+      <span class="flex-shrink-0 w-7 h-7 rounded-full bg-goldAntique-400/20 border border-goldAntique-400 flex items-center justify-center text-goldAntique-300 text-sm">✦</span>
+      <p id="toast-message" class="font-sansUI text-xs sm:text-sm font-medium leading-snug"></p>
+    </div>
+  </div>
+
+  <!-- Floating Audio Toggle Button (Top Right) -->
+  <button
+    id="audio-toggle-btn"
+    type="button"
+    aria-label="Toggle Royal Chime Sound"
+    title="Toggle Sound"
+    class="fixed top-4 right-4 z-40 w-11 h-11 rounded-full bg-emeraldRoyal-900/90 backdrop-blur-md border border-goldAntique-400/60 text-goldAntique-300 shadow-lg flex items-center justify-center hover:bg-emeraldRoyal-800 active:scale-95 transition-all"
+  >
+    <!-- Sound On SVG -->
+    <svg id="icon-sound-on" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" />
+    </svg>
+    <!-- Sound Off SVG -->
+    <svg id="icon-sound-off" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M23 9l-6 6M17 9l6 6" />
+    </svg>
+  </button>
+
+  <!-- ===================================================================== -->
+  <!-- 1. ENTRANCE EXPERIENCE: ROYAL EMERALD & GOLD WAX SEAL COVER OVERLAY   -->
+  <!-- ===================================================================== -->
+  <div id="entrance-overlay" class="fixed inset-0 z-50 bg-emeraldRoyal-950 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <!-- Ornate Outer Mughal Arch Frame -->
+    <div class="relative w-full max-w-md min-h-[88vh] sm:min-h-[640px] rounded-[28px] bg-gradient-to-b from-emeraldRoyal-900 via-emeraldRoyal-950 to-emeraldRoyal-900 border-2 border-goldAntique-400/70 shadow-royalCard flex flex-col items-center justify-between px-5 py-8 sm:px-8 sm:py-10 text-center overflow-hidden">
+
+      <!-- Corner Mandala SVG Filigree (Top Left & Top Right) -->
+      <svg class="absolute top-0 left-0 w-24 h-24 text-goldAntique-400/35 pointer-events-none" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 H100 C60 0 40 20 35 35 C20 40 0 60 0 100 Z" fill="currentColor" fill-opacity="0.12"/>
+        <path d="M4 4 H85 M4 4 V85 M14 14 C40 14 55 28 55 55 M14 14 C14 40 28 55 55 55" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <svg class="absolute top-0 right-0 w-24 h-24 text-goldAntique-400/35 pointer-events-none scale-x-[-1]" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 H100 C60 0 40 20 35 35 C20 40 0 60 0 100 Z" fill="currentColor" fill-opacity="0.12"/>
+        <path d="M4 4 H85 M4 4 V85 M14 14 C40 14 55 28 55 55 M14 14 C14 40 28 55 55 55" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <!-- Corner Mandala SVG Filigree (Bottom Left & Bottom Right) -->
+      <svg class="absolute bottom-0 left-0 w-24 h-24 text-goldAntique-400/35 pointer-events-none scale-y-[-1]" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 H100 C60 0 40 20 35 35 C20 40 0 60 0 100 Z" fill="currentColor" fill-opacity="0.12"/>
+        <path d="M4 4 H85 M4 4 V85 M14 14 C40 14 55 28 55 55 M14 14 C14 40 28 55 55 55" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <svg class="absolute bottom-0 right-0 w-24 h-24 text-goldAntique-400/35 pointer-events-none scale-[-1]" viewBox="0 0 100 100" fill="none">
+        <path d="M0 0 H100 C60 0 40 20 35 35 C20 40 0 60 0 100 Z" fill="currentColor" fill-opacity="0.12"/>
+        <path d="M4 4 H85 M4 4 V85 M14 14 C40 14 55 28 55 55 M14 14 C14 40 28 55 55 55" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+
+      <!-- Inner Subtle Double Gold Arch Border -->
+      <div class="absolute inset-3 rounded-[22px] border border-goldAntique-400/30 pointer-events-none"></div>
+
+      <!-- Top: Arabic Bismillah Calligraphy (Secret 5-Tap Admin Trigger) -->
+      <div class="relative z-10 w-full pt-2">
+        <p id="cover-bismillah" class="font-arabic text-2xl sm:text-3xl text-goldAntique-200 tracking-wide drop-shadow select-none cursor-default">
+          بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
+        </p>
+        <div class="flex items-center justify-center gap-2 mt-2">
+          <span class="h-px w-12 bg-gradient-to-r from-transparent to-goldAntique-400/70"></span>
+          <span class="text-goldAntique-400 text-xs">❖</span>
+          <span class="h-px w-12 bg-gradient-to-l from-transparent to-goldAntique-400/70"></span>
+        </div>
+        <p class="mt-2 font-royal text-[11px] sm:text-xs uppercase tracking-[0.28em] text-goldAntique-300/90">
+          Royal Wedding Invitation
+        </p>
+      </div>
+
+      <!-- Center: Personalized Guest Banner + Couple Initials + Wax Seal -->
+      <div class="relative z-10 flex flex-col items-center my-4 w-full">
+        <!-- Personalized Relative Banner -->
+        <div id="cover-guest-box" class="mb-5 px-4 py-2.5 rounded-2xl bg-emeraldRoyal-800/80 border border-goldAntique-400/50 shadow-inner max-w-xs w-full">
+          <p class="font-sansUI text-[10px] uppercase tracking-[0.22em] text-goldAntique-300/90">
+            Specially Invited
+          </p>
+          <p id="cover-guest-name" class="font-serifFormal italic font-semibold text-xl sm:text-2xl text-ivorySilk-100 mt-0.5 leading-tight">
+            Respected Family & Loved Ones
+          </p>
+        </div>
+
+        <!-- Couple Monogram Names Preview -->
+        <h1 class="font-royal text-2xl sm:text-3xl font-bold gold-foil-text tracking-wide leading-snug">
+          <span id="cover-groom-name">Hamza</span>
+          <span class="font-script text-3xl sm:text-4xl mx-1.5 text-goldAntique-200">&amp;</span>
+          <span id="cover-bride-name">Zainab</span>
+        </h1>
+        <p class="font-serifFormal italic text-goldAntique-200/80 text-base mt-1">
+          Request the honour of your presence
+        </p>
+
+        <!-- Embossed Gold Wax Seal Button -->
+        <div class="mt-7 mb-2 relative flex flex-col items-center">
+          <button
+            id="open-invitation-btn"
+            type="button"
+            class="wax-seal-btn relative w-28 h-28 sm:w-32 sm:h-32 rounded-full flex flex-col items-center justify-center text-emeraldRoyal-950 shadow-waxSeal border-2 border-goldAntique-100/80 cursor-pointer focus:outline-none focus:ring-4 focus:ring-goldAntique-400/50 active:scale-95 transition-transform"
+          >
+            <!-- Concentric Wax Rim Ring -->
+            <span class="absolute inset-1.5 rounded-full border border-dashed border-emeraldRoyal-950/45 pointer-events-none"></span>
+            <span class="absolute inset-3 rounded-full border border-emeraldRoyal-950/30 pointer-events-none"></span>
+
+            <!-- Monogram Initials Inside Wax Seal -->
+            <span id="seal-monogram" class="font-royal font-black text-xl sm:text-2xl tracking-wider text-emeraldRoyal-950 drop-shadow-sm">
+              H &amp; Z
+            </span>
+            <span class="font-sansUI text-[9px] font-bold uppercase tracking-[0.16em] text-emeraldRoyal-950/90 mt-1 px-2 leading-tight">
+              Tap to Open
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom: Poetic Pakistani Blessing Footer -->
+      <div class="relative z-10 w-full pb-1">
+        <p class="font-serifFormal italic text-sm sm:text-base text-goldAntique-200/85">
+          “And We created you in pairs” — Quran 78:8
+        </p>
+        <p class="font-sansUI text-[10px] uppercase tracking-[0.2em] text-goldAntique-400/75 mt-1.5">
+          Scratch inside to reveal ceremony dates
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 2. MAIN INVITATION CARD CONTAINER (MOBILE-FIRST CENTERED ROYAL CARD)  -->
+  <!-- ===================================================================== -->
+  <main id="main-invitation-wrapper" class="relative z-20 max-w-xl mx-auto px-3 sm:px-5 pt-6 pb-28">
+
+    <!-- Main Ivory Silk & Royal Emerald Framed Card -->
+    <article class="ivory-silk-paper text-emeraldRoyal-950 rounded-[30px] shadow-royalCard border-2 border-goldAntique-400/80 overflow-hidden relative">
+
+      <!-- Top Royal Emerald & Gold Mughal Arch Header Banner -->
+      <header class="relative bg-gradient-to-b from-emeraldRoyal-950 via-emeraldRoyal-900 to-emeraldRoyal-800 text-ivorySilk-100 pt-9 pb-14 px-5 sm:px-8 text-center overflow-hidden">
+        <!-- Subtle Mughal Jali Pattern Overlay -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#d4af37 1.2px, transparent 1.2px); background-size: 18px 18px;"></div>
+
+        <!-- Ornamental SVG Crown Arch -->
+        <div class="relative z-10 flex justify-center mb-3">
+          <svg class="w-36 h-12 text-goldAntique-400" viewBox="0 0 180 54" fill="none">
+            <path d="M10 50 C45 50 65 20 90 6 C115 20 135 50 170 50" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M28 50 C55 50 72 28 90 16 C108 28 125 50 152 50" stroke="currentColor" stroke-width="0.9" stroke-dasharray="3 3"/>
+            <circle cx="90" cy="6" r="3.5" fill="currentColor"/>
+            <circle cx="90" cy="24" r="5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M82 24 L90 18 L98 24 L90 30 Z" fill="currentColor" fill-opacity="0.4"/>
+          </svg>
+        </div>
+
+        <!-- Bismillah Calligraphy (Secret 5-Tap Admin Trigger) -->
+        <p id="card-bismillah" class="relative z-10 font-arabic text-2xl sm:text-3xl text-goldAntique-200 leading-relaxed select-none cursor-default">
+          بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
+        </p>
+        <p class="relative z-10 font-serifFormal italic text-xs sm:text-sm text-goldAntique-200/85 mt-1">
+          In the name of Allah, the Most Beneficent, the Most Merciful
+        </p>
+
+        <!-- Personalized Guest Greeting Pill -->
+        <div class="relative z-10 mt-5 inline-flex flex-col items-center bg-emeraldRoyal-950/75 border border-goldAntique-400/60 rounded-2xl px-5 py-2.5 shadow-lg">
+          <span class="font-sansUI text-[10px] uppercase tracking-[0.22em] text-goldAntique-300">
+            Cordially Inviting
+          </span>
+          <span id="card-guest-name" class="font-serifFormal font-bold italic text-xl sm:text-2xl text-ivorySilk-50 mt-0.5">
+            Respected Family & Loved Ones
+          </span>
+        </div>
+
+        <!-- Scalloped Mughal Arch Bottom Divider SVG -->
+        <svg class="absolute bottom-0 left-0 w-full h-7 text-ivorySilk-100" viewBox="0 0 400 28" preserveAspectRatio="none">
+          <path d="M0 28 L0 14 Q25 0 50 14 Q75 28 100 14 Q125 0 150 14 Q175 28 200 14 Q225 0 250 14 Q275 28 300 14 Q325 0 350 14 Q375 28 400 14 L400 28 Z" fill="currentColor"/>
+        </svg>
+      </header>
+
+      <!-- ================================================================= -->
+      <!-- FORMAL PAKISTANI INVITATION WORDING & COUPLE HERO ARCH            -->
+      <!-- ================================================================= -->
+      <section class="px-5 sm:px-9 pt-5 pb-8 text-center reveal-section">
+        <!-- Parents / Host Invitation Text -->
+        <p id="host-parents-text" class="font-serifFormal font-bold text-lg sm:text-xl text-emeraldRoyal-900 tracking-wide">
+          Mrs. &amp; Mr. Tariq Mahmood
+        </p>
+        <p id="invitation-verse-text" class="font-serifFormal text-base sm:text-lg text-emeraldRoyal-800/90 leading-relaxed mt-1.5 max-w-md mx-auto">
+          cordially request the honour of your gracious presence &amp; heartfelt prayers at the auspicious wedding ceremonies of their beloved son
+        </p>
+
+        <!-- Ornate Mughal Mehrab Arch Framing Groom & Bride -->
+        <div class="relative mt-7 mb-4 mx-auto max-w-md pt-9 pb-8 px-4 sm:px-7 rounded-t-[160px] rounded-b-[28px] border-2 border-goldAntique-400 bg-gradient-to-b from-ivorySilk-50 via-ivorySilk-100 to-ivorySilk-200/70 shadow-inner">
+          <!-- Inner Arch Accent Line -->
+          <div class="absolute inset-2 rounded-t-[152px] rounded-b-[22px] border border-goldAntique-400/45 pointer-events-none"></div>
+
+          <!-- Top Arch Medallion Crest (Secret 5-Tap Admin Trigger) -->
+          <div id="couple-crest-trigger" class="w-11 h-11 mx-auto -mt-14 mb-4 rounded-full bg-emeraldRoyal-900 border-2 border-goldAntique-400 flex items-center justify-center text-goldAntique-300 shadow-md select-none cursor-default">
+            <span id="arch-crest-initials" class="font-royal text-xs font-bold tracking-tighter">H&amp;Z</span>
+          </div>
+
+          <!-- Groom Name & Lineage -->
+          <div>
+            <h2 id="groom-name-display" class="font-royal text-2xl sm:text-3xl font-bold text-emeraldRoyal-900 tracking-wide">
+              Hamza Tariq
+            </h2>
+            <p id="groom-parents-display" class="font-serifFormal italic text-sm sm:text-base text-emeraldRoyal-800/85 mt-0.5">
+              S/o Mr. &amp; Mrs. Tariq Mahmood
+            </p>
+          </div>
+
+          <!-- Ornamental Script Ampersand Divider -->
+          <div class="my-4 flex items-center justify-center gap-3">
+            <span class="h-px w-14 bg-gradient-to-r from-transparent via-goldAntique-500 to-goldAntique-400"></span>
+            <span class="font-script text-4xl sm:text-5xl text-goldAntique-500 leading-none select-none">&amp;</span>
+            <span class="h-px w-14 bg-gradient-to-l from-transparent via-goldAntique-500 to-goldAntique-400"></span>
+          </div>
+
+          <!-- Bride Name & Lineage -->
+          <div>
+            <h2 id="bride-name-display" class="font-royal text-2xl sm:text-3xl font-bold text-maroonRoyal-800 tracking-wide">
+              Zainab Fatima
+            </h2>
+            <p id="bride-parents-display" class="font-serifFormal italic text-sm sm:text-base text-emeraldRoyal-800/85 mt-0.5">
+              D/o Mr. &amp; Mrs. Kamran Siddiqui
+            </p>
+          </div>
+
+          <!-- Insha'Allah Blessing Tag -->
+          <div class="mt-5 pt-3 border-t border-goldAntique-400/35">
+            <span class="font-serifFormal italic font-semibold text-base text-goldAntique-600">
+              Insha’Allah
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 3. WEDDING CEREMONIES WITH INTERACTIVE SCRATCH-TO-REVEAL FOIL     -->
+      <!-- ================================================================= -->
+      <section class="px-4 sm:px-8 pb-10 reveal-section">
+        <!-- Section Title + Quick Reveal Helper -->
+        <div class="text-center mb-6">
+          <p class="font-sansUI text-[11px] uppercase tracking-[0.25em] text-goldAntique-600 font-semibold">
+            Save The Dates
+          </p>
+          <h3 class="font-royal text-xl sm:text-2xl font-bold text-emeraldRoyal-900 mt-1">
+            Wedding Celebrations
+          </h3>
+          <p class="font-serifFormal italic text-base text-emeraldRoyal-800/85 mt-1">
+            Gently scratch the gold foil on each card to reveal the date &amp; time
+          </p>
+
+          <!-- Subtle Reveal All Helper Button -->
+          <button
+            id="reveal-all-btn"
+            type="button"
+            class="mt-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-goldAntique-400/15 hover:bg-goldAntique-400/25 border border-goldAntique-500/40 text-emeraldRoyal-900 font-sansUI text-xs font-medium transition-colors"
+          >
+            <span>✨ Reveal All Dates</span>
+          </button>
+        </div>
+
+        <div class="space-y-6">
+
+          <!-- --------------------------------------------------------------- -->
+          <!-- EVENT 1: RASM-E-MEHNDI (Emerald & Marigold Gold Theme)          -->
+          <!-- --------------------------------------------------------------- -->
+          <div id="event-card-mehndi" class="relative rounded-3xl bg-gradient-to-br from-emeraldRoyal-900 via-emeraldRoyal-800 to-emeraldRoyal-950 text-ivorySilk-100 p-5 sm:p-6 border border-goldAntique-400/65 shadow-xl overflow-hidden">
+            <!-- Decorative Marigold Mandala Watermark -->
+            <svg class="absolute -right-8 -top-8 w-36 h-36 text-amber-400/10 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+              <circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M50 5 L56 35 L85 20 L65 44 L95 50 L65 56 L85 80 L56 65 L50 95 L44 65 L15 80 L35 56 L5 50 L35 44 L15 20 L44 35 Z"/>
+            </svg>
+
+            <div class="relative z-10 flex items-start justify-between gap-3">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 font-sansUI text-[10px] uppercase tracking-[0.2em] font-semibold">
+                  Ceremony I
+                </span>
+                <h4 class="font-royal text-xl sm:text-2xl font-bold text-goldAntique-200 mt-1.5">
+                  Rasm-e-Mehndi
+                </h4>
+                <p class="font-serifFormal italic text-sm sm:text-base text-amber-100/85">
+                  An Evening of Henna, Dholak &amp; Marigold Hues
+                </p>
+              </div>
+              <!-- Henna / Dholak Emblem -->
+              <div class="w-11 h-11 rounded-2xl bg-amber-400/15 border border-amber-300/40 flex items-center justify-center text-amber-300 flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.5 3.5 6 6.5 6 10.5a6 6 0 11-12 0C6 9.5 9.5 6.5 12 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v8m-3-3l3 3 3-3" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Interactive Scratch-to-Reveal Box -->
+            <div class="relative z-10 mt-4">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="font-sansUI text-[11px] uppercase tracking-wider text-goldAntique-300/90 font-medium">
+                  Date &amp; Timings
+                </span>
+                <span id="badge-mehndi" class="hidden font-sansUI text-[11px] text-emerald-300 font-semibold">
+                  ✓ Revealed
+                </span>
+              </div>
+
+              <div class="relative h-24 sm:h-28 w-full rounded-2xl overflow-hidden border-2 border-goldAntique-400/80 bg-ivorySilk-100 shadow-inner">
+                <!-- Revealed Typography Underneath -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center px-3 text-center bg-gradient-to-b from-ivorySilk-50 to-amber-50">
+                  <p id="date-mehndi-display" class="font-royal font-bold text-base sm:text-lg text-emeraldRoyal-900 leading-snug">
+                    Friday, 18th December 2026
+                  </p>
+                  <p id="time-mehndi-display" class="font-serifFormal font-semibold text-base sm:text-lg text-amber-800 mt-0.5">
+                    8:00 PM Onwards • Dinner at 9:30 PM
+                  </p>
+                </div>
+
+                <!-- Interactive Gold Foil Scratch Canvas -->
+                <canvas
+                  id="scratch-mehndi"
+                  data-event="mehndi"
+                  class="scratch-canvas absolute inset-0 w-full h-full z-20"
+                ></canvas>
+              </div>
+            </div>
+
+            <!-- Venue & Location Action -->
+            <div class="relative z-10 mt-4 pt-3.5 border-t border-goldAntique-400/25 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-goldAntique-300 mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <p class="font-sansUI text-[10px] uppercase tracking-wider text-goldAntique-300/80">Venue</p>
+                  <p id="venue-mehndi-display" class="font-serifFormal font-semibold text-base text-ivorySilk-100 leading-snug">
+                    The Nishat Lawn, Gulberg III, Lahore
+                  </p>
+                </div>
+              </div>
+              <a
+                id="map-mehndi-link"
+                href="https://maps.google.com/?q=The+Nishat+Hotel+Gulberg+Lahore"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-goldAntique-400/20 hover:bg-goldAntique-400/30 border border-goldAntique-400/60 text-goldAntique-200 font-sansUI text-xs font-semibold transition-all flex-shrink-0"
+              >
+                <span>View Location</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- --------------------------------------------------------------- -->
+          <!-- EVENT 2: BARAT & NIKAH (Royal Maroon & Antique Gold Theme)      -->
+          <!-- --------------------------------------------------------------- -->
+          <div id="event-card-barat" class="relative rounded-3xl bg-gradient-to-br from-maroonRoyal-800 via-maroonRoyal-900 to-emeraldRoyal-950 text-ivorySilk-100 p-5 sm:p-6 border border-goldAntique-400/75 shadow-xl overflow-hidden">
+            <!-- Decorative Mughal Chandelier/Crown Watermark -->
+            <svg class="absolute -right-8 -top-8 w-36 h-36 text-goldAntique-300/10 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+              <path d="M50 8 L60 32 L86 32 L65 48 L73 74 L50 58 L27 74 L35 48 L14 32 L40 32 Z"/>
+            </svg>
+
+            <div class="relative z-10 flex items-start justify-between gap-3">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-goldAntique-400/20 border border-goldAntique-300/45 text-goldAntique-200 font-sansUI text-[10px] uppercase tracking-[0.2em] font-semibold">
+                  Ceremony II • Main Event
+                </span>
+                <h4 class="font-royal text-xl sm:text-2xl font-bold text-goldAntique-200 mt-1.5">
+                  Barat &amp; Nikah
+                </h4>
+                <p class="font-serifFormal italic text-sm sm:text-base text-rose-100/85">
+                  The Royal Wedding Procession &amp; Sacred Union
+                </p>
+              </div>
+              <!-- Royal Crown / Rings Emblem -->
+              <div class="w-11 h-11 rounded-2xl bg-goldAntique-400/15 border border-goldAntique-300/45 flex items-center justify-center text-goldAntique-300 flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 18h18M4 15l2-9 6 5 6-5 2 9H4z" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Interactive Scratch-to-Reveal Box -->
+            <div class="relative z-10 mt-4">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="font-sansUI text-[11px] uppercase tracking-wider text-goldAntique-300/90 font-medium">
+                  Date &amp; Timings
+                </span>
+                <span id="badge-barat" class="hidden font-sansUI text-[11px] text-amber-200 font-semibold">
+                  ✓ Revealed
+                </span>
+              </div>
+
+              <div class="relative h-24 sm:h-28 w-full rounded-2xl overflow-hidden border-2 border-goldAntique-400/85 bg-ivorySilk-100 shadow-inner">
+                <!-- Revealed Typography Underneath -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center px-3 text-center bg-gradient-to-b from-ivorySilk-50 to-rose-50">
+                  <p id="date-barat-display" class="font-royal font-bold text-base sm:text-lg text-maroonRoyal-800 leading-snug">
+                    Saturday, 19th December 2026
+                  </p>
+                  <p id="time-barat-display" class="font-serifFormal font-semibold text-base sm:text-lg text-emeraldRoyal-900 mt-0.5">
+                    Nikah at 7:30 PM • Barat Arrival 8:30 PM
+                  </p>
+                </div>
+
+                <!-- Interactive Gold Foil Scratch Canvas -->
+                <canvas
+                  id="scratch-barat"
+                  data-event="barat"
+                  class="scratch-canvas absolute inset-0 w-full h-full z-20"
+                ></canvas>
+              </div>
+            </div>
+
+            <!-- Venue & Location Action -->
+            <div class="relative z-10 mt-4 pt-3.5 border-t border-goldAntique-400/25 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-goldAntique-300 mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <p class="font-sansUI text-[10px] uppercase tracking-wider text-goldAntique-300/80">Venue</p>
+                  <p id="venue-barat-display" class="font-serifFormal font-semibold text-base text-ivorySilk-100 leading-snug">
+                    Royal Palm Golf &amp; Country Club, Lahore
+                  </p>
+                </div>
+              </div>
+              <a
+                id="map-barat-link"
+                href="https://maps.google.com/?q=Royal+Palm+Golf+and+Country+Club+Lahore"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-goldAntique-400/25 hover:bg-goldAntique-400/35 border border-goldAntique-400/65 text-goldAntique-100 font-sansUI text-xs font-semibold transition-all flex-shrink-0"
+              >
+                <span>View Location</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- --------------------------------------------------------------- -->
+          <!-- EVENT 3: DAWAT-E-WALIMA (Ivory Silk & Emerald Theme)            -->
+          <!-- --------------------------------------------------------------- -->
+          <div id="event-card-walima" class="relative rounded-3xl bg-gradient-to-br from-ivorySilk-50 via-ivorySilk-100 to-ivorySilk-200 text-emeraldRoyal-950 p-5 sm:p-6 border-2 border-emeraldRoyal-800/35 shadow-lg overflow-hidden">
+            <!-- Decorative Floral Watermark -->
+            <svg class="absolute -right-8 -top-8 w-36 h-36 text-emeraldRoyal-800/5 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="3"/>
+              <circle cx="50" cy="50" r="24" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/>
+            </svg>
+
+            <div class="relative z-10 flex items-start justify-between gap-3">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-emeraldRoyal-900 text-goldAntique-200 font-sansUI text-[10px] uppercase tracking-[0.2em] font-semibold">
+                  Ceremony III
+                </span>
+                <h4 class="font-royal text-xl sm:text-2xl font-bold text-emeraldRoyal-900 mt-1.5">
+                  Dawat-e-Walima
+                </h4>
+                <p class="font-serifFormal italic text-sm sm:text-base text-emeraldRoyal-800/85">
+                  The Grand Wedding Reception &amp; Feast
+                </p>
+              </div>
+              <!-- Floral Banquet Emblem -->
+              <div class="w-11 h-11 rounded-2xl bg-emeraldRoyal-900/10 border border-emeraldRoyal-800/25 flex items-center justify-center text-emeraldRoyal-800 flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Interactive Scratch-to-Reveal Box -->
+            <div class="relative z-10 mt-4">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="font-sansUI text-[11px] uppercase tracking-wider text-emeraldRoyal-800 font-semibold">
+                  Date &amp; Timings
+                </span>
+                <span id="badge-walima" class="hidden font-sansUI text-[11px] text-emeraldRoyal-700 font-bold">
+                  ✓ Revealed
+                </span>
+              </div>
+
+              <div class="relative h-24 sm:h-28 w-full rounded-2xl overflow-hidden border-2 border-goldAntique-500/80 bg-emeraldRoyal-950 shadow-inner">
+                <!-- Revealed Typography Underneath -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center px-3 text-center bg-gradient-to-b from-emeraldRoyal-900 to-emeraldRoyal-950 text-ivorySilk-100">
+                  <p id="date-walima-display" class="font-royal font-bold text-base sm:text-lg text-goldAntique-200 leading-snug">
+                    Sunday, 20th December 2026
+                  </p>
+                  <p id="time-walima-display" class="font-serifFormal font-semibold text-base sm:text-lg text-ivorySilk-100 mt-0.5">
+                    Reception 7:30 PM • Dinner at 9:00 PM
+                  </p>
+                </div>
+
+                <!-- Interactive Gold Foil Scratch Canvas -->
+                <canvas
+                  id="scratch-walima"
+                  data-event="walima"
+                  class="scratch-canvas absolute inset-0 w-full h-full z-20"
+                ></canvas>
+              </div>
+            </div>
+
+            <!-- Venue & Location Action -->
+            <div class="relative z-10 mt-4 pt-3.5 border-t border-emeraldRoyal-900/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emeraldRoyal-800 mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <p class="font-sansUI text-[10px] uppercase tracking-wider text-emeraldRoyal-800/75">Venue</p>
+                  <p id="venue-walima-display" class="font-serifFormal font-semibold text-base text-emeraldRoyal-950 leading-snug">
+                    Pearl Continental Grand Ballroom, Lahore
+                  </p>
+                </div>
+              </div>
+              <a
+                id="map-walima-link"
+                href="https://maps.google.com/?q=Pearl+Continental+Hotel+Lahore"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-emeraldRoyal-900 hover:bg-emeraldRoyal-800 text-goldAntique-200 font-sansUI text-xs font-semibold shadow-sm transition-all flex-shrink-0"
+              >
+                <span>View Location</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Ornamental Gold Divider -->
+      <div class="px-8 flex items-center justify-center gap-3 opacity-80">
+        <span class="h-px flex-1 bg-gradient-to-r from-transparent to-goldAntique-500"></span>
+        <span class="text-goldAntique-500 text-base">❖ ✦ ❖</span>
+        <span class="h-px flex-1 bg-gradient-to-l from-transparent to-goldAntique-500"></span>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 4. INTERACTIVE RSVP & FAMILY BLESSINGS WALL                       -->
+      <!-- ================================================================= -->
+      <section class="px-5 sm:px-9 py-9 reveal-section">
+        <div class="text-center mb-6">
+          <p class="font-sansUI text-[11px] uppercase tracking-[0.25em] text-goldAntique-600 font-semibold">
+            Your Presence Is Our Joy
+          </p>
+          <h3 class="font-royal text-xl sm:text-2xl font-bold text-emeraldRoyal-900 mt-1">
+            RSVP &amp; Family Blessings
+          </h3>
+          <p class="font-serifFormal italic text-base text-emeraldRoyal-800/85 mt-1">
+            Confirm your attendance &amp; leave a heartfelt dua for the couple
+          </p>
+        </div>
+
+        <!-- RSVP Form Card -->
+        <form id="rsvp-form" class="bg-ivorySilk-50/95 border border-goldAntique-400/60 rounded-3xl p-5 sm:p-6 shadow-sm space-y-4 font-sansUI">
+          <!-- Relative / Guest Name -->
+          <div>
+            <label for="rsvp-name" class="block text-xs font-semibold uppercase tracking-wider text-emeraldRoyal-900 mb-1.5">
+              Your Name / Family Name *
+            </label>
+            <input
+              type="text"
+              id="rsvp-name"
+              required
+              placeholder="e.g. Chacha Jaan & Family"
+              class="w-full px-4 py-2.5 rounded-xl bg-white border border-goldAntique-400/50 text-emeraldRoyal-950 text-sm focus:outline-none focus:ring-2 focus:ring-emeraldRoyal-800"
+            />
+          </div>
+
+          <!-- Attendance & Guest Count Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label for="rsvp-status" class="block text-xs font-semibold uppercase tracking-wider text-emeraldRoyal-900 mb-1.5">
+                Will You Attend?
+              </label>
+              <select
+                id="rsvp-status"
+                class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-goldAntique-400/50 text-emeraldRoyal-950 text-sm focus:outline-none focus:ring-2 focus:ring-emeraldRoyal-800"
+              >
+                <option value="Joyfully Attending">Joyfully Attending, Insha'Allah</option>
+                <option value="Sending Warm Prayers">Unable to Attend, Sending Duas</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="rsvp-guests" class="block text-xs font-semibold uppercase tracking-wider text-emeraldRoyal-900 mb-1.5">
+                Number of Guests
+              </label>
+              <select
+                id="rsvp-guests"
+                class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-goldAntique-400/50 text-emeraldRoyal-950 text-sm focus:outline-none focus:ring-2 focus:ring-emeraldRoyal-800"
+              >
+                <option value="1 Guest">1 Guest</option>
+                <option value="2 Guests" selected>2 Guests</option>
+                <option value="3 Guests">3 Guests</option>
+                <option value="4 Guests">4 Guests</option>
+                <option value="5+ Family Members">5+ Family Members</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Events Attending Checkboxes -->
+          <div>
+            <span class="block text-xs font-semibold uppercase tracking-wider text-emeraldRoyal-900 mb-2">
+              Ceremonies Joining
+            </span>
+            <div class="grid grid-cols-3 gap-2">
+              <label class="cursor-pointer">
+                <input type="checkbox" name="rsvp-events" value="Mehndi" checked class="peer sr-only" />
+                <div class="text-center py-2 px-2 rounded-xl border border-goldAntique-400/50 bg-white text-xs font-semibold text-emeraldRoyal-900 peer-checked:bg-emeraldRoyal-900 peer-checked:text-goldAntique-200 peer-checked:border-emeraldRoyal-900 transition-all">
+                  Mehndi
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="rsvp-events" value="Barat" checked class="peer sr-only" />
+                <div class="text-center py-2 px-2 rounded-xl border border-goldAntique-400/50 bg-white text-xs font-semibold text-emeraldRoyal-900 peer-checked:bg-maroonRoyal-800 peer-checked:text-goldAntique-200 peer-checked:border-maroonRoyal-800 transition-all">
+                  Barat
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="rsvp-events" value="Walima" checked class="peer sr-only" />
+                <div class="text-center py-2 px-2 rounded-xl border border-goldAntique-400/50 bg-white text-xs font-semibold text-emeraldRoyal-900 peer-checked:bg-emeraldRoyal-800 peer-checked:text-goldAntique-200 peer-checked:border-emeraldRoyal-800 transition-all">
+                  Walima
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Dua / Blessing Message -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="rsvp-message" class="block text-xs font-semibold uppercase tracking-wider text-emeraldRoyal-900">
+                Heartfelt Dua / Blessing
+              </label>
+              <button
+                type="button"
+                id="insert-dua-chip"
+                class="text-[11px] font-medium text-goldAntique-600 hover:text-emeraldRoyal-900 underline"
+              >
+                + Insert Sunnah Dua
+              </button>
+            </div>
+            <textarea
+              id="rsvp-message"
+              rows="2"
+              placeholder="Write your prayers and wishes for the bride & groom..."
+              class="w-full px-4 py-2.5 rounded-xl bg-white border border-goldAntique-400/50 text-emeraldRoyal-950 text-sm focus:outline-none focus:ring-2 focus:ring-emeraldRoyal-800"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emeraldRoyal-900 via-emeraldRoyal-800 to-emeraldRoyal-900 hover:from-emeraldRoyal-800 hover:to-emeraldRoyal-700 text-goldAntique-200 font-semibold text-sm tracking-wide shadow-lg border border-goldAntique-400/50 active:scale-[0.99] transition-all cursor-pointer"
+          >
+            Send RSVP &amp; Post Blessing ✦
+          </button>
+
+          <!-- Optional Direct WhatsApp RSVP Confirmation Link (Shown when Admin sets WhatsApp Number) -->
+          <a
+            id="rsvp-whatsapp-direct-btn"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden w-full py-2.5 px-4 rounded-xl bg-emerald-700/10 hover:bg-emerald-700/20 border border-emerald-700/35 text-emeraldRoyal-900 font-semibold text-xs items-center justify-center gap-2 transition-colors"
+          >
+            <span>💬 Also Confirm Directly via WhatsApp</span>
+          </a>
+        </form>
+
+        <!-- Live Family Blessings Wall -->
+        <div class="mt-7">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-royal text-base font-bold text-emeraldRoyal-900">
+              Family Blessings Wall
+            </h4>
+            <span id="blessings-count" class="font-sansUI text-xs text-emeraldRoyal-800/75 font-medium">
+              3 Blessings
+            </span>
+          </div>
+
+          <div id="blessings-wall-list" class="space-y-3 max-h-72 overflow-y-auto pr-1">
+            <!-- Dynamically populated blessings -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Card Footer -->
+      <footer class="bg-emeraldRoyal-950 text-goldAntique-200/85 px-6 py-7 text-center border-t border-goldAntique-400/40">
+        <p class="font-arabic text-xl text-goldAntique-300">
+          بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
+        </p>
+        <p class="font-serifFormal italic text-sm text-ivorySilk-200/80 mt-1.5 max-w-sm mx-auto">
+          “May Allah bless you both, shower His blessings upon you, and unite you both in goodness.”
+        </p>
+        <div class="mt-4 pt-4 border-t border-goldAntique-400/20 flex flex-col items-center gap-1">
+          <p id="footer-family-line" class="font-royal text-xs uppercase tracking-[0.2em] text-goldAntique-300">
+            With Compliments: Mahmood &amp; Siddiqui Families
+          </p>
+          <p class="font-sansUI text-[10px] text-goldAntique-400/50 mt-1 select-none">
+            R.S.V.P. Requested • Looking Forward to Welcoming You
+          </p>
+        </div>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- 5. STEALTH ADMIN MODE ACTIVE PILL (HIDDEN UNTIL PASSWORD VERIFIED)    -->
+  <!-- ===================================================================== -->
+  <div id="admin-active-pill" class="fixed bottom-4 left-4 z-40 hidden items-center gap-2 bg-emeraldRoyal-950/95 backdrop-blur-md border-2 border-goldAntique-400 rounded-full p-1.5 pl-3.5 shadow-2xl font-sansUI">
+    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+    <span class="text-xs font-bold text-goldAntique-200 tracking-wide">Admin Mode Active</span>
+    <button
+      id="open-admin-studio-btn"
+      type="button"
+      class="ml-1 px-3 py-1.5 rounded-full bg-goldAntique-400 hover:bg-goldAntique-300 text-emeraldRoyal-950 font-bold text-xs transition-colors cursor-pointer"
+    >
+      Open Studio
+    </button>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 6. SECRET ADMIN PASSWORD LOGIN MODAL                                  -->
+  <!-- ===================================================================== -->
+  <div id="admin-login-modal" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/80 backdrop-blur-md p-4 font-sansUI">
+    <div id="admin-login-card" class="w-full max-w-sm rounded-3xl bg-gradient-to-b from-emeraldRoyal-900 to-emeraldRoyal-950 border-2 border-goldAntique-400/80 text-ivorySilk-100 p-6 shadow-2xl relative">
+      <button
+        id="close-admin-login-btn"
+        type="button"
+        aria-label="Close Admin Login"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-emeraldRoyal-800 hover:bg-emeraldRoyal-700 border border-goldAntique-400/40 text-goldAntique-200 flex items-center justify-center text-sm cursor-pointer"
+      >
+        ✕
+      </button>
+
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-2xl bg-goldAntique-400/15 border border-goldAntique-400/60 flex items-center justify-center text-goldAntique-300 text-xl">
+          🔐
+        </div>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-goldAntique-300 font-semibold">
+          Host &amp; Designer Access
+        </span>
+        <h3 class="font-royal text-xl font-bold text-ivorySilk-50 mt-1">
+          Admin Profile Login
+        </h3>
+        <p class="text-xs text-ivorySilk-200/75 mt-1">
+          Enter your admin password to edit invitation details &amp; generate relative links
+        </p>
+      </div>
+
+      <form id="admin-login-form" class="space-y-4">
+        <div>
+          <label for="admin-password-input" class="block text-xs font-semibold uppercase tracking-wider text-goldAntique-200 mb-1.5">
+            Admin Password
+          </label>
+          <div class="relative">
+            <input
+              type="password"
+              id="admin-password-input"
+              required
+              autocomplete="current-password"
+              placeholder="Enter admin password"
+              class="w-full pl-4 pr-11 py-3 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/60 text-ivorySilk-50 text-sm focus:outline-none focus:ring-2 focus:ring-goldAntique-400"
+            />
+            <button
+              type="button"
+              id="toggle-password-visibility"
+              aria-label="Show or hide password"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-goldAntique-300/80 hover:text-goldAntique-200 text-xs font-semibold px-1.5 py-1 cursor-pointer"
+            >
+              Show
+            </button>
+          </div>
+          <p id="admin-login-error" class="hidden text-xs text-rose-300 font-medium mt-1.5">
+            Incorrect password. Please try again.
+          </p>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-goldAntique-400 to-goldAntique-300 hover:from-goldAntique-300 hover:to-goldAntique-200 text-emeraldRoyal-950 font-bold text-sm shadow-lg active:scale-[0.99] transition-all cursor-pointer"
+        >
+          Unlock Admin Studio ✦
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 7. SLIDE-OVER ADMIN STUDIO DRAWER (ONLY ACCESSIBLE WHEN LOGGED IN)    -->
+  <!-- ===================================================================== -->
+  <div id="admin-studio-drawer" class="fixed inset-0 z-[75] hidden justify-end bg-black/75 backdrop-blur-sm font-sansUI">
+    <div class="w-full max-w-lg bg-emeraldRoyal-950 border-l-2 border-goldAntique-400/75 text-ivorySilk-100 h-full flex flex-col shadow-2xl overflow-hidden">
+
+      <!-- Drawer Header -->
+      <div class="px-5 py-4 bg-emeraldRoyal-900 border-b border-goldAntique-400/35 flex items-center justify-between gap-2">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.22em] text-goldAntique-300 font-semibold">
+            Protected Host Workspace
+          </span>
+          <h3 class="font-royal text-lg font-bold text-ivorySilk-50">
+            Royal Admin Studio
+          </h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            id="lock-exit-admin-btn"
+            type="button"
+            class="px-3 py-1.5 rounded-xl bg-maroonRoyal-800 hover:bg-maroonRoyal-700 border border-rose-400/40 text-rose-100 text-xs font-bold transition-colors cursor-pointer"
+          >
+            🔒 Lock &amp; Exit
+          </button>
+          <button
+            id="close-admin-studio-btn"
+            type="button"
+            aria-label="Minimize Admin Studio"
+            class="w-8 h-8 rounded-full bg-emeraldRoyal-800 hover:bg-emeraldRoyal-700 border border-goldAntique-400/40 text-goldAntique-200 flex items-center justify-center text-base cursor-pointer"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Studio Navigation Tabs -->
+      <div class="grid grid-cols-4 bg-emeraldRoyal-900/70 border-b border-goldAntique-400/30 p-1.5 gap-1 text-[11px] font-bold">
+        <button type="button" data-admin-tab="links" class="admin-tab-btn py-2 px-2 rounded-xl bg-goldAntique-400 text-emeraldRoyal-950 transition-colors cursor-pointer">
+          Guest Links
+        </button>
+        <button type="button" data-admin-tab="details" class="admin-tab-btn py-2 px-2 rounded-xl text-goldAntique-200 hover:bg-emeraldRoyal-800 transition-colors cursor-pointer">
+          Couple &amp; Host
+        </button>
+        <button type="button" data-admin-tab="events" class="admin-tab-btn py-2 px-2 rounded-xl text-goldAntique-200 hover:bg-emeraldRoyal-800 transition-colors cursor-pointer">
+          Events &amp; Foil
+        </button>
+        <button type="button" data-admin-tab="security" class="admin-tab-btn py-2 px-2 rounded-xl text-goldAntique-200 hover:bg-emeraldRoyal-800 transition-colors cursor-pointer">
+          RSVPs &amp; Export
+        </button>
+      </div>
+
+      <!-- Drawer Scrollable Body -->
+      <div class="p-5 overflow-y-auto flex-1 space-y-5">
+
+        <!-- TAB 1: GUEST LINK GENERATOR -->
+        <div id="admin-panel-links" class="admin-tab-panel space-y-4">
+          <div class="p-4 rounded-2xl bg-emeraldRoyal-900/90 border border-goldAntique-400/60 space-y-3">
+            <div class="flex items-center justify-between">
+              <label for="cust-guest" class="text-xs font-bold uppercase tracking-wider text-goldAntique-300">
+                Relative / Guest Name on Card
+              </label>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-goldAntique-400/20 text-goldAntique-200">
+                Live Sync
+              </span>
+            </div>
+            <input
+              type="text"
+              id="cust-guest"
+              placeholder="e.g. Chacha Jaan & Family"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/50 text-ivorySilk-50 text-sm focus:outline-none focus:ring-2 focus:ring-goldAntique-400"
+            />
+            <div class="flex flex-wrap gap-1.5">
+              <button type="button" class="guest-preset-chip text-[11px] px-2.5 py-1 rounded-lg bg-emeraldRoyal-800 hover:bg-emeraldRoyal-700 border border-goldAntique-400/30 text-goldAntique-200 cursor-pointer" data-name="Chacha Jaan & Family">+ Chacha Jaan</button>
+              <button type="button" class="guest-preset-chip text-[11px] px-2.5 py-1 rounded-lg bg-emeraldRoyal-800 hover:bg-emeraldRoyal-700 border border-goldAntique-400/30 text-goldAntique-200 cursor-pointer" data-name="Mamu Jaan & Family">+ Mamu Jaan</button>
+              <button type="button" class="guest-preset-chip text-[11px] px-2.5 py-1 rounded-lg bg-emeraldRoyal-800 hover:bg-emeraldRoyal-700 border border-goldAntique-400/30 text-goldAntique-200 cursor-pointer" data-name="Khala Jaan & Family">+ Khala Jaan</button>
+              <button type="button" class="guest-preset-chip text-[11px] px-2.5 py-1 rounded-lg bg-emeraldRoyal-800 hover:bg-emeraldRoyal-700 border border-goldAntique-400/30 text-goldAntique-200 cursor-pointer" data-name="Phuppo Jaan & Family">+ Phuppo Jaan</button>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-gradient-to-br from-goldAntique-500/20 to-emeraldRoyal-900 border border-goldAntique-400/70 space-y-2.5">
+            <label for="generated-share-url" class="block text-xs font-bold uppercase tracking-wider text-goldAntique-200">
+              Clean Personalized Relative Link
+            </label>
+            <p class="text-[11px] text-ivorySilk-200/75 leading-relaxed">
+              Includes the relative’s name and encodes all your edited names, dates &amp; venues directly in the URL—with zero Admin UI visible to guests.
+            </p>
+            <input
+              type="text"
+              id="generated-share-url"
+              readonly
+              class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950/90 border border-goldAntique-400/40 text-goldAntique-100 text-xs font-mono select-all focus:outline-none"
+            />
+            <div class="grid grid-cols-2 gap-2.5 pt-1">
+              <button
+                type="button"
+                id="copy-link-btn"
+                class="py-2.5 px-3 rounded-xl bg-goldAntique-400 hover:bg-goldAntique-300 text-emeraldRoyal-950 font-bold text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all cursor-pointer"
+              >
+                <span>📋 Copy Link</span>
+              </button>
+              <a
+                id="whatsapp-share-btn"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all"
+              >
+                <span>💬 Share via WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: COUPLE, PARENTS & VERSE -->
+        <div id="admin-panel-details" class="admin-tab-panel hidden space-y-4">
+          <div class="p-4 rounded-2xl bg-emeraldRoyal-900/75 border border-goldAntique-400/40 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-goldAntique-300">
+              Host Parents &amp; Invitation Wording
+            </h4>
+            <div>
+              <label class="block text-[11px] text-goldAntique-200/80 mb-1">Host Parents Line</label>
+              <input type="text" id="cust-host" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-goldAntique-200/80 mb-1">Invitation Verse / Request Line</label>
+              <textarea id="cust-verse" rows="2" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white"></textarea>
+            </div>
+            <div>
+              <label class="block text-[11px] text-goldAntique-200/80 mb-1">Footer Compliments Line</label>
+              <input type="text" id="cust-footer" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-emeraldRoyal-900/75 border border-goldAntique-400/40 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-goldAntique-300">
+              Groom &amp; Bride Details
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-[11px] text-goldAntique-200/80 mb-1">Groom Name</label>
+                <input type="text" id="cust-groom" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-goldAntique-200/80 mb-1">Groom Parents (S/o)</label>
+                <input type="text" id="cust-groom-parents" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-[11px] text-goldAntique-200/80 mb-1">Bride Name</label>
+                <input type="text" id="cust-bride" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-goldAntique-200/80 mb-1">Bride Parents (D/o)</label>
+                <input type="text" id="cust-bride-parents" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-emeraldRoyal-900/75 border border-goldAntique-400/40 space-y-2">
+            <label for="cust-rsvp-wa" class="block text-xs font-bold uppercase tracking-wider text-goldAntique-300">
+              RSVP WhatsApp Number (Optional)
+            </label>
+            <input
+              type="text"
+              id="cust-rsvp-wa"
+              placeholder="e.g. 923001234567 (Country code + number)"
+              class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white"
+            />
+            <p class="text-[11px] text-ivorySilk-200/70">
+              Enables a direct “Confirm via WhatsApp” button for guests under the RSVP form.
+            </p>
+          </div>
+        </div>
+
+        <!-- TAB 3: EVENTS & SCRATCH-OFF FOIL CONTENT -->
+        <div id="admin-panel-events" class="admin-tab-panel hidden space-y-4">
+          <p class="text-xs text-goldAntique-200/85 bg-emeraldRoyal-900/70 p-3 rounded-xl border border-goldAntique-400/30">
+            Changes below update the hidden ceremony dates &amp; timings underneath the interactive gold scratch-off foil in real time.
+          </p>
+
+          <!-- Mehndi -->
+          <div class="p-4 rounded-2xl bg-emeraldRoyal-900/75 border border-amber-400/40 space-y-2">
+            <p class="text-xs font-bold text-amber-300 uppercase tracking-wider">I. Rasm-e-Mehndi</p>
+            <input type="text" id="cust-mehndi-date" placeholder="Date" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+            <input type="text" id="cust-mehndi-time" placeholder="Timings" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+            <input type="text" id="cust-mehndi-venue" placeholder="Venue" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+          </div>
+
+          <!-- Barat -->
+          <div class="p-4 rounded-2xl bg-emeraldRoyal-900/75 border border-rose-400/40 space-y-2">
+            <p class="text-xs font-bold text-rose-300 uppercase tracking-wider">II. Barat &amp; Nikah</p>
+            <input type="text" id="cust-barat-date" placeholder="Date" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+            <input type="text" id="cust-barat-time" placeholder="Timings" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+            <input type="text" id="cust-barat-venue" placeholder="Venue" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+          </div>
+
+          <!-- Walima -->
+          <div class="p-4 rounded-2xl bg-emeraldRoyal-900/75 border border-emerald-400/40 space-y-2">
+            <p class="text-xs font-bold text-emerald-300 uppercase tracking-wider">III. Dawat-e-Walima</p>
+            <input type="text" id="cust-walima-date" placeholder="Date" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+            <input type="text" id="cust-walima-time" placeholder="Timings" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+            <input type="text" id="cust-walima-venue" placeholder="Venue" class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white" />
+          </div>
+        </div>
+
+        <!-- TAB 4: RSVPs, PASSWORD SECURITY & STANDALONE EXPORT -->
+        <div id="admin-panel-security" class="admin-tab-panel hidden space-y-4">
+
+          <!-- Export Standalone HTML Box -->
+          <div class="p-4 rounded-2xl bg-gradient-to-br from-goldAntique-500/25 to-emeraldRoyal-900 border border-goldAntique-400/80 space-y-2.5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-goldAntique-200">
+              Export Standalone HTML File
+            </h4>
+            <p class="text-[11px] text-ivorySilk-200/80 leading-relaxed">
+              Downloads a complete <code class="text-goldAntique-200">index.html</code> with your latest edited names, dates, venues, and updated password hash baked into the default configuration—ready to upload to any host.
+            </p>
+            <button
+              type="button"
+              id="export-standalone-btn"
+              class="w-full py-3 px-4 rounded-xl bg-goldAntique-400 hover:bg-goldAntique-300 text-emeraldRoyal-950 font-bold text-xs shadow-lg active:scale-95 transition-all cursor-pointer"
+            >
+              ⬇ Export Standalone HTML (index.html)
+            </button>
+          </div>
+
+          <!-- Change Admin Password Form -->
+          <form id="change-password-form" class="p-4 rounded-2xl bg-emeraldRoyal-900/75 border border-goldAntique-400/40 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-goldAntique-300">
+              Change Admin Password
+            </h4>
+            <div>
+              <label for="new-admin-password" class="block text-[11px] text-goldAntique-200/80 mb-1">New Password (Min 4 characters)</label>
+              <input
+                type="password"
+                id="new-admin-password"
+                minlength="4"
+                required
+                placeholder="Enter new admin password"
+                class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white"
+              />
+            </div>
+            <div>
+              <label for="confirm-admin-password" class="block text-[11px] text-goldAntique-200/80 mb-1">Confirm New Password</label>
+              <input
+                type="password"
+                id="confirm-admin-password"
+                minlength="4"
+                required
+                placeholder="Confirm new password"
+                class="w-full px-3 py-2 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/40 text-xs text-white"
+              />
+            </div>
+            <button
+              type="submit"
+              class="w-full py-2.5 px-4 rounded-xl bg-emeraldRoyal-800 hover:bg-emeraldRoyal-700 border border-goldAntique-400/60 text-goldAntique-200 font-bold text-xs transition-colors cursor-pointer"
+            >
+              Update Admin Password
+            </button>
+          </form>
+
+          <!-- Submitted RSVPs & Blessings Manager -->
+          <div class="p-4 rounded-2xl bg-emeraldRoyal-900/75 border border-goldAntique-400/40 space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-goldAntique-300">
+                Submitted RSVPs &amp; Blessings
+              </h4>
+              <span id="admin-rsvp-total" class="text-[11px] text-goldAntique-200 font-semibold">0 Entries</span>
+            </div>
+            <div id="admin-rsvp-list" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT: STATE, SECRET TRIGGERS, PASSWORD HASH, SCRATCH & EXPORT   -->
+  <!-- ===================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* -------------------------------------------------------------------
+       * 1. BAKED CONFIGURATION & DETERMINISTIC PASSWORD HASHING
+       * ------------------------------------------------------------------- */
+      function computePasswordHash(str) {
+        let h1 = 0xdeadbeef ^ str.length;
+        let h2 = 0x41c6ce57 ^ str.length;
+        for (let i = 0; i < str.length; i++) {
+          const ch = str.charCodeAt(i);
+          h1 = Math.imul(h1 ^ ch, 2654435761);
+          h2 = Math.imul(h2 ^ ch, 1597334677);
+        }
+        h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+        h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+        return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16);
+      }
+
+      /* === EXPORT_CONFIG_START === */
+      const defaultState = {
+        guest: 'Respected Family & Loved Ones',
+        host: 'Mrs. & Mr. Tariq Mahmood',
+        verse: 'cordially request the honour of your gracious presence & heartfelt prayers at the auspicious wedding ceremonies of their beloved son',
+        footerLine: 'With Compliments: Mahmood & Siddiqui Families',
+        groom: 'Hamza Tariq',
+        groomParents: 'S/o Mr. & Mrs. Tariq Mahmood',
+        bride: 'Zainab Fatima',
+        brideParents: 'D/o Mr. & Mrs. Kamran Siddiqui',
+        mehndiDate: 'Friday, 18th December 2026',
+        mehndiTime: '8:00 PM Onwards • Dinner at 9:30 PM',
+        mehndiVenue: 'The Nishat Lawn, Gulberg III, Lahore',
+        baratDate: 'Saturday, 19th December 2026',
+        baratTime: 'Nikah at 7:30 PM • Barat Arrival 8:30 PM',
+        baratVenue: 'Royal Palm Golf & Country Club, Lahore',
+        walimaDate: 'Sunday, 20th December 2026',
+        walimaTime: 'Reception 7:30 PM • Dinner at 9:00 PM',
+        walimaVenue: 'Pearl Continental Grand Ballroom, Lahore',
+        rsvpWhatsApp: ''
+      };
+      const BAKED_ADMIN_HASH = '';
+      /* === EXPORT_CONFIG_END === */
+
+      const ADMIN_HASH_STORAGE_KEY = 'royal_wedding_admin_hash_v1';
+      let activeAdminHash = localStorage.getItem(ADMIN_HASH_STORAGE_KEY) || BAKED_ADMIN_HASH || computePasswordHash('ROYAL2026');
+      let isAdminAuthenticated = false;
+
+      // UTF-8 Safe Base64 Encode/Decode for URL Config Payload
+      function encodeConfigBase64(obj) {
+        try {
+          const jsonStr = JSON.stringify(obj);
+          const bytes = new TextEncoder().encode(jsonStr);
+          let bin = '';
+          bytes.forEach((b) => { bin += String.fromCharCode(b); });
+          return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        } catch (e) {
+          return '';
+        }
+      }
+
+      function decodeConfigBase64(b64) {
+        try {
+          let norm = b64.replace(/-/g, '+').replace(/_/g, '/');
+          while (norm.length % 4) norm += '=';
+          const bin = atob(norm);
+          const bytes = new Uint8Array(bin.length);
+          for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+          return JSON.parse(new TextDecoder().decode(bytes));
+        } catch (e) {
+          return null;
+        }
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const encodedPayload = urlParams.get('c') ? decodeConfigBase64(urlParams.get('c')) : null;
+
+      const invitationState = {
+        ...defaultState,
+        ...(encodedPayload && typeof encodedPayload === 'object' ? encodedPayload : {})
+      };
+
+      // Override with explicit query params if provided
+      if (urlParams.get('guest')?.trim()) invitationState.guest = urlParams.get('guest').trim();
+      if (urlParams.get('host')?.trim()) invitationState.host = urlParams.get('host').trim();
+      if (urlParams.get('groom')?.trim()) invitationState.groom = urlParams.get('groom').trim();
+      if (urlParams.get('bride')?.trim()) invitationState.bride = urlParams.get('bride').trim();
+
+      /* -------------------------------------------------------------------
+       * 2. TOAST NOTIFICATION SYSTEM (NO ALERT / CONFIRM)
+       * ------------------------------------------------------------------- */
+      let toastTimer = null;
+      function showToast(message) {
+        const banner = document.getElementById('toast-banner');
+        const msgEl = document.getElementById('toast-message');
+        if (!banner || !msgEl) return;
+
+        msgEl.textContent = message;
+        banner.classList.remove('opacity-0', '-translate-y-4');
+        banner.classList.add('opacity-100', 'translate-y-0');
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          banner.classList.remove('opacity-100', 'translate-y-0');
+          banner.classList.add('opacity-0', '-translate-y-4');
+        }, 3200);
+      }
+
+      /* -------------------------------------------------------------------
+       * 4. DOM RENDERING & LIVE SYNC WITH ADMIN STUDIO STATE
+       * ------------------------------------------------------------------- */
+      function getInitials(name) {
+        const clean = (name || '').trim();
+        return clean ? clean.charAt(0).toUpperCase() : '✦';
+      }
+
+      function renderInvitationContent() {
+        // Cover & Card Guest Name
+        document.getElementById('cover-guest-name').textContent = invitationState.guest;
+        document.getElementById('card-guest-name').textContent = invitationState.guest;
+
+        // Pre-fill RSVP name if personalized guest parameter is present
+        const rsvpNameInput = document.getElementById('rsvp-name');
+        if (rsvpNameInput && !rsvpNameInput.value && invitationState.guest !== defaultState.guest) {
+          rsvpNameInput.value = invitationState.guest;
+        }
+
+        // Cover Groom & Bride First Names + Seal & Arch Monograms
+        const groomFirst = invitationState.groom.split(' ')[0] || invitationState.groom;
+        const brideFirst = invitationState.bride.split(' ')[0] || invitationState.bride;
+        const initialsText = `${getInitials(groomFirst)} & ${getInitials(brideFirst)}`;
+        document.getElementById('cover-groom-name').textContent = groomFirst;
+        document.getElementById('cover-bride-name').textContent = brideFirst;
+        document.getElementById('seal-monogram').textContent = initialsText;
+        const archCrestEl = document.getElementById('arch-crest-initials');
+        if (archCrestEl) archCrestEl.textContent = `${getInitials(groomFirst)}&${getInitials(brideFirst)}`;
+        document.title = `Wedding Invitation | ${groomFirst} & ${brideFirst}`;
+
+        // Formal Card Wording & Couple Arch
+        document.getElementById('host-parents-text').textContent = invitationState.host;
+        document.getElementById('invitation-verse-text').textContent = invitationState.verse;
+        document.getElementById('footer-family-line').textContent = invitationState.footerLine;
+        document.getElementById('groom-name-display').textContent = invitationState.groom;
+        document.getElementById('groom-parents-display').textContent = invitationState.groomParents;
+        document.getElementById('bride-name-display').textContent = invitationState.bride;
+        document.getElementById('bride-parents-display').textContent = invitationState.brideParents;
+
+        // Mehndi Event
+        document.getElementById('date-mehndi-display').textContent = invitationState.mehndiDate;
+        document.getElementById('time-mehndi-display').textContent = invitationState.mehndiTime;
+        document.getElementById('venue-mehndi-display').textContent = invitationState.mehndiVenue;
+        document.getElementById('map-mehndi-link').href = `https://maps.google.com/?q=${encodeURIComponent(invitationState.mehndiVenue)}`;
+
+        // Barat Event
+        document.getElementById('date-barat-display').textContent = invitationState.baratDate;
+        document.getElementById('time-barat-display').textContent = invitationState.baratTime;
+        document.getElementById('venue-barat-display').textContent = invitationState.baratVenue;
+        document.getElementById('map-barat-link').href = `https://maps.google.com/?q=${encodeURIComponent(invitationState.baratVenue)}`;
+
+        // Walima Event
+        document.getElementById('date-walima-display').textContent = invitationState.walimaDate;
+        document.getElementById('time-walima-display').textContent = invitationState.walimaTime;
+        document.getElementById('venue-walima-display').textContent = invitationState.walimaVenue;
+        document.getElementById('map-walima-link').href = `https://maps.google.com/?q=${encodeURIComponent(invitationState.walimaVenue)}`;
+
+        // Optional Direct WhatsApp RSVP Link
+        updateDirectWhatsAppRSVPLink();
+      }
+
+      function updateDirectWhatsAppRSVPLink() {
+        const waBtn = document.getElementById('rsvp-whatsapp-direct-btn');
+        if (!waBtn) return;
+        const cleanPhone = (invitationState.rsvpWhatsApp || '').replace(/[^\d]/g, '');
+        if (!cleanPhone) {
+          waBtn.classList.add('hidden');
+          waBtn.classList.remove('flex');
+          return;
+        }
+        const guestName = document.getElementById('rsvp-name')?.value.trim() || invitationState.guest;
+        const msg = `Assalam-o-Alaikum! RSVP Confirmation from *${guestName}* for the wedding celebrations of *${invitationState.groom}* & *${invitationState.bride}*. Joyfully attending, Insha'Allah!`;
+        waBtn.href = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(msg)}`;
+        waBtn.classList.remove('hidden');
+        waBtn.classList.add('flex');
+      }
+
+      /* -------------------------------------------------------------------
+       * 5. ENTRANCE WAX SEAL GATEFOLD TRANSITION
+       * ------------------------------------------------------------------- */
+      const entranceOverlay = document.getElementById('entrance-overlay');
+      const openInvitationBtn = document.getElementById('open-invitation-btn');
+
+      openInvitationBtn.addEventListener('click', () => {
+        // Enable gentle chime sound on first explicit user interaction
+        isSoundEnabled = true;
+        updateAudioUI();
+        playRoyalChime('welcome');
+
+        entranceOverlay.classList.add('opened');
+        triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.45, 45);
+
+        // Ensure scratch canvases are sized accurately right after reveal
+        setTimeout(() => {
+          initAllScratchCards();
+          document.querySelectorAll('.reveal-section').forEach((sec) => sec.classList.add('visible'));
+        }, 250);
+      });
+
+      /* -------------------------------------------------------------------
+       * 6. INTERACTIVE GOLD FOIL SCRATCH-TO-REVEAL CANVAS ENGINE
+       * ------------------------------------------------------------------- */
+      const scratchControllers = {};
+
+      function createScratchCard(canvasId, eventKey) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return null;
+
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        let isDrawing = false;
+        let isRevealed = false;
+        let lastPoint = null;
+        let moveCount = 0;
+
+        function paintGoldFoilTexture() {
+          const rect = canvas.getBoundingClientRect();
+          if (rect.width === 0 || rect.height === 0) return;
+
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = Math.floor(rect.width * dpr);
+          canvas.height = Math.floor(rect.height * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const w = rect.width;
+          const h = rect.height;
+
+          // 1. Rich Brushed Metallic Gold Foil Linear Gradient
+          const grad = ctx.createLinearGradient(0, 0, w, h);
+          grad.addColorStop(0.0, '#9f7519');
+          grad.addColorStop(0.22, '#d4af37');
+          grad.addColorStop(0.45, '#f8e6a3');
+          grad.addColorStop(0.55, '#e8c55c');
+          grad.addColorStop(0.78, '#b88922');
+          grad.addColorStop(1.0, '#8d6410');
+
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, w, h);
+
+          // 2. Subtle Diagonal Metallic Sheen Streaks
+          ctx.save();
+          ctx.strokeStyle = 'rgba(255, 252, 232, 0.22)';
+          ctx.lineWidth = 1;
+          for (let i = -h; i < w + h; i += 7) {
+            ctx.beginPath();
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i + h * 0.65, h);
+            ctx.stroke();
+          }
+          ctx.restore();
+
+          // 3. Delicate Embossed Inner Dashed Frame
+          ctx.save();
+          ctx.strokeStyle = 'rgba(62, 41, 4, 0.45)';
+          ctx.lineWidth = 1.2;
+          ctx.setLineDash([4, 4]);
+          ctx.strokeRect(7, 7, w - 14, h - 14);
+          ctx.restore();
+
+          // 4. Crisp Engraved Prompt Text on Foil
+          ctx.save();
+          ctx.fillStyle = '#2d1c03';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          const fontSize = w < 320 ? 12 : 13.5;
+          ctx.font = `700 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+          ctx.fillText('✨ Scratch Here to Reveal Date & Time ✨', w / 2, h / 2 - 6);
+
+          ctx.font = `500 ${fontSize - 2}px "Plus Jakarta Sans", sans-serif`;
+          ctx.fillStyle = 'rgba(45, 28, 3, 0.78)';
+          ctx.fillText('Swipe finger or cursor across gold foil', w / 2, h / 2 + 13);
+          ctx.restore();
+        }
+
+        function getCoordinates(e) {
+          const rect = canvas.getBoundingClientRect();
+          let clientX, clientY;
+          if (e.touches && e.touches.length > 0) {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+          } else {
+            clientX = e.clientX;
+            clientY = e.clientY;
+          }
+          return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+          };
+        }
+
+        function scratchAt(pt) {
+          if (isRevealed) return;
+          ctx.globalCompositeOperation = 'destination-out';
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.lineWidth = 34;
+
+          ctx.beginPath();
+          if (lastPoint) {
+            ctx.moveTo(lastPoint.x, lastPoint.y);
+            ctx.lineTo(pt.x, pt.y);
+          } else {
+            ctx.moveTo(pt.x, pt.y);
+            ctx.lineTo(pt.x + 0.1, pt.y + 0.1);
+          }
+          ctx.stroke();
+          lastPoint = pt;
+        }
+
+        function checkClearedPercentage() {
+          if (isRevealed) return;
+          try {
+            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            let transparentPixels = 0;
+            const stride = 32; // Sample every 8th pixel (32 bytes) for blazing 60fps mobile speed
+            const totalSamples = Math.floor(imgData.length / stride);
+
+            for (let i = 3; i < imgData.length; i += stride) {
+              if (imgData[i] < 128) {
+                transparentPixels++;
+              }
+            }
+
+            const ratio = transparentPixels / Math.max(1, totalSamples);
+            if (ratio >= 0.45) {
+              revealCard(true);
+            }
+          } catch (err) {
+            // Ignore any canvas read error
+          }
+        }
+
+        function revealCard(celebrate = true) {
+          if (isRevealed) return;
+          isRevealed = true;
+          canvas.classList.add('revealed');
+
+          const badge = document.getElementById(`badge-${eventKey}`);
+          if (badge) badge.classList.remove('hidden');
+
+          if (celebrate) {
+            playRoyalChime('sparkle');
+            const rect = canvas.getBoundingClientRect();
+            triggerConfettiBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 36);
+          }
+        }
+
+        // Mouse Events
+        canvas.addEventListener('mousedown', (e) => {
+          isDrawing = true;
+          lastPoint = getCoordinates(e);
+          scratchAt(lastPoint);
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!isDrawing || isRevealed) return;
+          const pt = getCoordinates(e);
+          scratchAt(pt);
+          moveCount++;
+          if (moveCount % 8 === 0) checkClearedPercentage();
+        });
+
+        window.addEventListener('mouseup', () => {
+          if (!isDrawing) return;
+          isDrawing = false;
+          lastPoint = null;
+          checkClearedPercentage();
+        });
+
+        // Touch Events (Mobile First)
+        canvas.addEventListener('touchstart', (e) => {
+          if (isRevealed) return;
+          isDrawing = true;
+          lastPoint = getCoordinates(e);
+          scratchAt(lastPoint);
+        }, { passive: true });
+
+        canvas.addEventListener('touchmove', (e) => {
+          if (!isDrawing || isRevealed) return;
+          const pt = getCoordinates(e);
+          scratchAt(pt);
+          moveCount++;
+          if (moveCount % 6 === 0) checkClearedPercentage();
+        }, { passive: true });
+
+        canvas.addEventListener('touchend', () => {
+          if (!isDrawing) return;
+          isDrawing = false;
+          lastPoint = null;
+          checkClearedPercentage();
+        });
+
+        paintGoldFoilTexture();
+
+        return {
+          paint: () => {
+            if (!isRevealed) paintGoldFoilTexture();
+          },
+          reveal: (celebrate) => revealCard(celebrate)
+        };
+      }
+
+      function initAllScratchCards() {
+        if (!scratchControllers.mehndi) {
+          scratchControllers.mehndi = createScratchCard('scratch-mehndi', 'mehndi');
+          scratchControllers.barat = createScratchCard('scratch-barat', 'barat');
+          scratchControllers.walima = createScratchCard('scratch-walima', 'walima');
+        } else {
+          scratchControllers.mehndi?.paint();
+          scratchControllers.barat?.paint();
+          scratchControllers.walima?.paint();
+        }
+      }
+
+      // Reveal All Dates Helper Button
+      document.getElementById('reveal-all-btn').addEventListener('click', () => {
+        Object.values(scratchControllers).forEach((ctrl) => ctrl?.reveal(false));
+        playRoyalChime('sparkle');
+        triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.5, 42);
+        showToast('All wedding ceremony dates & times revealed!');
+      });
+
+      /* -------------------------------------------------------------------
+       * 7. CELEBRATORY GOLD CONFETTI BURST & AMBIENT DUST PARTICLES
+       * ------------------------------------------------------------------- */
+      const confettiCanvas = document.getElementById('confetti-canvas');
+      const confettiCtx = confettiCanvas.getContext('2d');
+      let confettiParticles = [];
+
+      function resizeOverlayCanvases() {
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+        dustCanvas.width = window.innerWidth;
+        dustCanvas.height = window.innerHeight;
+      }
+
+      function triggerConfettiBurst(originX, originY, count = 35) {
+        const colors = ['#d4af37', '#f5e29f', '#fff3c4', '#aa8020', '#145e48', '#7c1926'];
+        for (let i = 0; i < count; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 2.5 + Math.random() * 6.5;
+          confettiParticles.push({
+            x: originX,
+            y: originY,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 2.5,
+            size: 4 + Math.random() * 5,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            rotSpeed: (Math.random() - 0.5) * 12,
+            alpha: 1
+          });
+        }
+      }
+
+      // Ambient Golden Dust Motes
+      const dustCanvas = document.getElementById('gold-dust-canvas');
+      const dustCtx = dustCanvas.getContext('2d');
+      const dustMotes = Array.from({ length: 28 }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: 0.8 + Math.random() * 2.1,
+        vy: -0.15 - Math.random() * 0.35,
+        vx: (Math.random() - 0.5) * 0.25,
+        alpha: 0.25 + Math.random() * 0.55
+      }));
+
+      function animateParticles() {
+        // 1. Dust Motes
+        dustCtx.clearRect(0, 0, dustCanvas.width, dustCanvas.height);
+        dustMotes.forEach((m) => {
+          m.x += m.vx;
+          m.y += m.vy;
+          if (m.y < -10) {
+            m.y = dustCanvas.height + 10;
+            m.x = Math.random() * dustCanvas.width;
+          }
+          dustCtx.beginPath();
+          dustCtx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+          dustCtx.fillStyle = `rgba(245, 226, 159, ${m.alpha})`;
+          dustCtx.fill();
+        });
+
+        // 2. Confetti Burst
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        confettiParticles = confettiParticles.filter((p) => p.alpha > 0.02);
+        confettiParticles.forEach((p) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.16; // Gravity
+          p.vx *= 0.98;
+          p.rotation += p.rotSpeed;
+          p.alpha -= 0.014;
+
+          confettiCtx.save();
+          confettiCtx.translate(p.x, p.y);
+          confettiCtx.rotate((p.rotation * Math.PI) / 180);
+          confettiCtx.globalAlpha = Math.max(0, p.alpha);
+          confettiCtx.fillStyle = p.color;
+          confettiCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+          confettiCtx.restore();
+        });
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      /* -------------------------------------------------------------------
+       * 8. RSVP & LIVE FAMILY BLESSINGS WALL (WITH LOCALSTORAGE)
+       * ------------------------------------------------------------------- */
+      const STORAGE_KEY = 'pakistani_wedding_blessings_v1';
+
+      const defaultBlessings = [
+        {
+          name: 'Chacha Jaan & Family',
+          status: 'Joyfully Attending',
+          events: ['Mehndi', 'Barat', 'Walima'],
+          message: 'MashaAllah! May Allah SWT bless Hamza & Zainab with endless love, prosperity, and a lifetime of Barakah. Can’t wait to celebrate together!'
+        },
+        {
+          name: 'Dr. Ayesha & Kamran Uncle',
+          status: 'Joyfully Attending',
+          events: ['Barat', 'Walima'],
+          message: 'Heartiest congratulations to both families! Praying for a blissful and harmonious married life ahead, Insha’Allah.'
+        },
+        {
+          name: 'Bilal & Hina (London)',
+          status: 'Joyfully Attending',
+          events: ['Mehndi', 'Barat', 'Walima'],
+          message: 'Flying in specially for the big celebrations! BarakAllahu Lakuma wa Baraka Alaikuma.'
+        }
+      ];
+
+      function loadBlessings() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          }
+        } catch (e) {
+          // Fallback to defaults
+        }
+        return defaultBlessings;
+      }
+
+      function saveBlessings(list) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        } catch (e) {
+          // Ignore storage quota issues
+        }
+      }
+
+      let blessingsList = loadBlessings();
+
+      function renderBlessingsWall() {
+        const container = document.getElementById('blessings-wall-list');
+        const countEl = document.getElementById('blessings-count');
+        if (!container) return;
+
+        countEl.textContent = `${blessingsList.length} ${blessingsList.length === 1 ? 'Blessing' : 'Blessings'}`;
+        container.innerHTML = '';
+
+        blessingsList.forEach((item) => {
+          const card = document.createElement('div');
+          card.className = 'p-3.5 rounded-2xl bg-white/90 border border-goldAntique-400/45 shadow-sm font-sansUI';
+
+          const eventBadges = (item.events || [])
+            .map((ev) => `<span class="px-2 py-0.5 rounded-md bg-emeraldRoyal-900/10 text-emeraldRoyal-900 text-[10px] font-semibold">${ev}</span>`)
+            .join('');
+
+          card.innerHTML = `
+            <div class="flex items-start justify-between gap-2">
+              <p class="font-bold text-xs sm:text-sm text-emeraldRoyal-950">${escapeHTML(item.name)}</p>
+              <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-goldAntique-400/20 text-goldAntique-600 flex-shrink-0">
+                ${escapeHTML(item.status)}
+              </span>
+            </div>
+            <p class="font-serifFormal italic text-base text-emeraldRoyal-900/90 mt-1.5 leading-snug">
+              “${escapeHTML(item.message)}”
+            </p>
+            ${eventBadges ? `<div class="flex flex-wrap gap-1.5 mt-2">${eventBadges}</div>` : ''}
+          `;
+          container.appendChild(card);
+        });
+
+        renderAdminRSVPList();
+      }
+
+      function renderAdminRSVPList() {
+        const adminList = document.getElementById('admin-rsvp-list');
+        const adminTotal = document.getElementById('admin-rsvp-total');
+        if (!adminList || !adminTotal) return;
+
+        adminTotal.textContent = `${blessingsList.length} ${blessingsList.length === 1 ? 'Entry' : 'Entries'}`;
+        adminList.innerHTML = '';
+
+        blessingsList.forEach((item, index) => {
+          const row = document.createElement('div');
+          row.className = 'p-2.5 rounded-xl bg-emeraldRoyal-950 border border-goldAntique-400/30 flex items-start justify-between gap-2 text-xs';
+          row.innerHTML = `
+            <div>
+              <p class="font-bold text-goldAntique-200">${escapeHTML(item.name)} <span class="text-[10px] font-normal text-emerald-300">(${escapeHTML(item.status)})</span></p>
+              <p class="text-ivorySilk-200/80 text-[11px] mt-0.5">${escapeHTML(item.message)}</p>
+            </div>
+            <button type="button" data-del-rsvp="${index}" class="text-rose-300 hover:text-rose-200 text-[11px] px-2 py-1 rounded bg-maroonRoyal-800/60 flex-shrink-0 cursor-pointer">
+              Remove
+            </button>
+          `;
+          adminList.appendChild(row);
+        });
+
+        adminList.querySelectorAll('[data-del-rsvp]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const idx = Number(btn.getAttribute('data-del-rsvp'));
+            blessingsList.splice(idx, 1);
+            saveBlessings(blessingsList);
+            renderBlessingsWall();
+            showToast('RSVP entry removed.');
+          });
+        });
+      }
+
+      function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+      }
+
+      document.getElementById('insert-dua-chip').addEventListener('click', () => {
+        const textarea = document.getElementById('rsvp-message');
+        textarea.value = 'MashaAllah! BarakAllahu Lakuma wa Baraka Alaikuma. May Allah bless your union with eternal love, peace, and Barakah.';
+        textarea.focus();
+      });
+
+      document.getElementById('rsvp-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('rsvp-name').value.trim();
+        const status = document.getElementById('rsvp-status').value;
+        const guests = document.getElementById('rsvp-guests').value;
+        const message = document.getElementById('rsvp-message').value.trim() ||
+          'Praying for a lifetime of happiness, love, and Barakah for the lovely couple!';
+
+        const checkedEvents = Array.from(document.querySelectorAll('input[name="rsvp-events"]:checked'))
+          .map((cb) => cb.value);
+
+        if (!name) return;
+
+        blessingsList.unshift({
+          name: `${name} (${guests})`,
+          status,
+          events: checkedEvents,
+          message
+        });
+
+        saveBlessings(blessingsList);
+        renderBlessingsWall();
+        updateDirectWhatsAppRSVPLink();
+        playRoyalChime('sparkle');
+        triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.65, 30);
+        showToast(`JazakAllah Khair, ${name}! Your RSVP & blessing have been posted.`);
+
+        document.getElementById('rsvp-message').value = '';
+      });
+
+      document.getElementById('rsvp-name')?.addEventListener('input', updateDirectWhatsAppRSVPLink);
+
+      /* -------------------------------------------------------------------
+       * 9. STEALTH ADMIN TRIGGERS, PASSWORD AUTH & ADMIN STUDIO WORKSPACE
+       * ------------------------------------------------------------------- */
+      const adminLoginModal = document.getElementById('admin-login-modal');
+      const adminLoginCard = document.getElementById('admin-login-card');
+      const adminPasswordInput = document.getElementById('admin-password-input');
+      const adminLoginError = document.getElementById('admin-login-error');
+      const adminActivePill = document.getElementById('admin-active-pill');
+      const adminStudioDrawer = document.getElementById('admin-studio-drawer');
+
+      function openAdminLoginModal() {
+        if (isAdminAuthenticated) {
+          openAdminStudioDrawer();
+          return;
+        }
+        adminLoginError.classList.add('hidden');
+        adminPasswordInput.value = '';
+        adminLoginModal.classList.remove('hidden');
+        adminLoginModal.classList.add('flex');
+        setTimeout(() => adminPasswordInput.focus(), 80);
+      }
+
+      function closeAdminLoginModal() {
+        adminLoginModal.classList.add('hidden');
+        adminLoginModal.classList.remove('flex');
+      }
+
+      // Secret Surface Gesture: 5 taps within 3 seconds on Bismillah or Couple Crest
+      function attachSecretTapGesture(elementId) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        let tapTimestamps = [];
+
+        el.addEventListener('click', () => {
+          const now = Date.now();
+          tapTimestamps = tapTimestamps.filter((t) => now - t < 3000);
+          tapTimestamps.push(now);
+
+          if (tapTimestamps.length >= 5) {
+            tapTimestamps = [];
+            openAdminLoginModal();
+          }
+        });
+      }
+
+      attachSecretTapGesture('cover-bismillah');
+      attachSecretTapGesture('card-bismillah');
+      attachSecretTapGesture('couple-crest-trigger');
+
+      // Secret URL Trigger: ?admin or #admin
+      function checkSecretUrlTrigger() {
+        const hasQueryAdmin = urlParams.has('admin');
+        const hasHashAdmin = window.location.hash.toLowerCase() === '#admin';
+        if (hasQueryAdmin || hasHashAdmin) {
+          openAdminLoginModal();
+        }
+      }
+
+      window.addEventListener('hashchange', checkSecretUrlTrigger);
+
+      // Show / Hide Password Toggle
+      document.getElementById('toggle-password-visibility').addEventListener('click', (e) => {
+        const btn = e.currentTarget;
+        if (adminPasswordInput.type === 'password') {
+          adminPasswordInput.type = 'text';
+          btn.textContent = 'Hide';
+        } else {
+          adminPasswordInput.type = 'password';
+          btn.textContent = 'Show';
+        }
+      });
+
+      // Verify Admin Password Submission
+      document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const entered = adminPasswordInput.value;
+        if (computePasswordHash(entered) === activeAdminHash) {
+          isAdminAuthenticated = true;
+          closeAdminLoginModal();
+          adminActivePill.classList.remove('hidden');
+          adminActivePill.classList.add('flex');
+          openAdminStudioDrawer();
+          playRoyalChime('sparkle');
+          showToast('Admin Profile Unlocked');
+        } else {
+          adminLoginError.classList.remove('hidden');
+          adminLoginCard.classList.remove('animate-shake');
+          void adminLoginCard.offsetWidth; // Reflow to restart animation
+          adminLoginCard.classList.add('animate-shake');
+          adminPasswordInput.select();
+        }
+      });
+
+      document.getElementById('close-admin-login-btn').addEventListener('click', closeAdminLoginModal);
+      adminLoginModal.addEventListener('click', (e) => {
+        if (e.target === adminLoginModal) closeAdminLoginModal();
+      });
+
+      // Admin Studio Drawer Controls
+      function openAdminStudioDrawer() {
+        if (!isAdminAuthenticated) return;
+        syncAdminInputsFromState();
+        adminStudioDrawer.classList.remove('hidden');
+        adminStudioDrawer.classList.add('flex');
+      }
+
+      function closeAdminStudioDrawer() {
+        adminStudioDrawer.classList.add('hidden');
+        adminStudioDrawer.classList.remove('flex');
+      }
+
+      function lockAndExitAdmin() {
+        isAdminAuthenticated = false;
+        closeAdminStudioDrawer();
+        adminActivePill.classList.add('hidden');
+        adminActivePill.classList.remove('flex');
+        showToast('Admin Studio locked. Guest view active.');
+      }
+
+      document.getElementById('open-admin-studio-btn').addEventListener('click', openAdminStudioDrawer);
+      document.getElementById('close-admin-studio-btn').addEventListener('click', closeAdminStudioDrawer);
+      document.getElementById('lock-exit-admin-btn').addEventListener('click', lockAndExitAdmin);
+      adminStudioDrawer.addEventListener('click', (e) => {
+        if (e.target === adminStudioDrawer) closeAdminStudioDrawer();
+      });
+
+      // Admin Studio Tab Switcher
+      document.querySelectorAll('.admin-tab-btn').forEach((tabBtn) => {
+        tabBtn.addEventListener('click', () => {
+          const targetTab = tabBtn.getAttribute('data-admin-tab');
+          document.querySelectorAll('.admin-tab-btn').forEach((b) => {
+            b.classList.remove('bg-goldAntique-400', 'text-emeraldRoyal-950');
+            b.classList.add('text-goldAntique-200');
+          });
+          tabBtn.classList.add('bg-goldAntique-400', 'text-emeraldRoyal-950');
+          tabBtn.classList.remove('text-goldAntique-200');
+
+          document.querySelectorAll('.admin-tab-panel').forEach((panel) => panel.classList.add('hidden'));
+          document.getElementById(`admin-panel-${targetTab}`)?.classList.remove('hidden');
+        });
+      });
+
+      // Admin Studio Form Fields Binding
+      const adminStudioFields = {
+        guest: document.getElementById('cust-guest'),
+        host: document.getElementById('cust-host'),
+        verse: document.getElementById('cust-verse'),
+        footerLine: document.getElementById('cust-footer'),
+        groom: document.getElementById('cust-groom'),
+        groomParents: document.getElementById('cust-groom-parents'),
+        bride: document.getElementById('cust-bride'),
+        brideParents: document.getElementById('cust-bride-parents'),
+        rsvpWhatsApp: document.getElementById('cust-rsvp-wa'),
+        mehndiDate: document.getElementById('cust-mehndi-date'),
+        mehndiTime: document.getElementById('cust-mehndi-time'),
+        mehndiVenue: document.getElementById('cust-mehndi-venue'),
+        baratDate: document.getElementById('cust-barat-date'),
+        baratTime: document.getElementById('cust-barat-time'),
+        baratVenue: document.getElementById('cust-barat-venue'),
+        walimaDate: document.getElementById('cust-walima-date'),
+        walimaTime: document.getElementById('cust-walima-time'),
+        walimaVenue: document.getElementById('cust-walima-venue')
+      };
+
+      function syncAdminInputsFromState() {
+        adminStudioFields.guest.value = invitationState.guest === defaultState.guest ? '' : invitationState.guest;
+        adminStudioFields.host.value = invitationState.host;
+        adminStudioFields.verse.value = invitationState.verse;
+        adminStudioFields.footerLine.value = invitationState.footerLine;
+        adminStudioFields.groom.value = invitationState.groom;
+        adminStudioFields.groomParents.value = invitationState.groomParents;
+        adminStudioFields.bride.value = invitationState.bride;
+        adminStudioFields.brideParents.value = invitationState.brideParents;
+        adminStudioFields.rsvpWhatsApp.value = invitationState.rsvpWhatsApp || '';
+        adminStudioFields.mehndiDate.value = invitationState.mehndiDate;
+        adminStudioFields.mehndiTime.value = invitationState.mehndiTime;
+        adminStudioFields.mehndiVenue.value = invitationState.mehndiVenue;
+        adminStudioFields.baratDate.value = invitationState.baratDate;
+        adminStudioFields.baratTime.value = invitationState.baratTime;
+        adminStudioFields.baratVenue.value = invitationState.baratVenue;
+        adminStudioFields.walimaDate.value = invitationState.walimaDate;
+        adminStudioFields.walimaTime.value = invitationState.walimaTime;
+        adminStudioFields.walimaVenue.value = invitationState.walimaVenue;
+        updateGeneratedShareURL();
+      }
+
+      function updateGeneratedShareURL() {
+        const baseUrl = window.location.origin + window.location.pathname;
+        const params = new URLSearchParams();
+
+        const guestVal = adminStudioFields.guest.value.trim();
+        if (guestVal) params.set('guest', guestVal);
+
+        // Collect any fields modified away from defaultState and encode into Base64 'c' parameter
+        const diffObj = {};
+        const configKeys = [
+          'host', 'verse', 'footerLine', 'groom', 'groomParents', 'bride', 'brideParents',
+          'mehndiDate', 'mehndiTime', 'mehndiVenue',
+          'baratDate', 'baratTime', 'baratVenue',
+          'walimaDate', 'walimaTime', 'walimaVenue',
+          'rsvpWhatsApp'
+        ];
+        configKeys.forEach((k) => {
+          if (invitationState[k] !== defaultState[k]) {
+            diffObj[k] = invitationState[k];
+          }
+        });
+
+        if (Object.keys(diffObj).length > 0) {
+          const encoded = encodeConfigBase64(diffObj);
+          if (encoded) params.set('c', encoded);
+        }
+
+        const queryString = params.toString();
+        const fullShareUrl = queryString ? `${baseUrl}?${queryString}` : baseUrl;
+        document.getElementById('generated-share-url').value = fullShareUrl;
+
+        const recipientLabel = guestVal || 'Respected Family & Loved Ones';
+        const waText =
+          `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم\n\n` +
+          `*Assalam-o-Alaikum ${recipientLabel},*\n` +
+          `${invitationState.host} cordially invite you to the wedding celebrations of *${invitationState.groom}* & *${invitationState.bride}*.\n\n` +
+          `✨ Tap your personal royal invitation card & scratch the gold foil to reveal ceremony dates:\n${fullShareUrl}`;
+
+        document.getElementById('whatsapp-share-btn').href = `https://wa.me/?text=${encodeURIComponent(waText)}`;
+      }
+
+      Object.entries(adminStudioFields).forEach(([key, inputEl]) => {
+        if (!inputEl) return;
+        inputEl.addEventListener('input', () => {
+          const val = inputEl.value.trim();
+          if (key === 'guest') {
+            invitationState.guest = val || defaultState.guest;
+          } else if (key === 'rsvpWhatsApp') {
+            invitationState.rsvpWhatsApp = val;
+          } else {
+            invitationState[key] = val || defaultState[key];
+          }
+          renderInvitationContent();
+          updateGeneratedShareURL();
+        });
+      });
+
+      document.querySelectorAll('.guest-preset-chip').forEach((chip) => {
+        chip.addEventListener('click', () => {
+          const presetName = chip.getAttribute('data-name');
+          adminStudioFields.guest.value = presetName;
+          invitationState.guest = presetName;
+          renderInvitationContent();
+          updateGeneratedShareURL();
+          showToast(`Personalized for "${presetName}"`);
+        });
+      });
+
+      document.getElementById('copy-link-btn').addEventListener('click', () => {
+        const urlInput = document.getElementById('generated-share-url');
+        urlInput.select();
+        urlInput.setSelectionRange(0, 99999);
+
+        let copied = false;
+        try {
+          copied = document.execCommand('copy');
+        } catch (err) {
+          copied = false;
+        }
+
+        if (!copied && navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(urlInput.value).catch(() => {});
+        }
+
+        const guestLabel = adminStudioFields.guest.value.trim() || 'your relative';
+        showToast(`Personalized guest link for ${guestLabel} copied!`);
+      });
+
+      // Change Admin Password Form
+      document.getElementById('change-password-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newPass = document.getElementById('new-admin-password').value;
+        const confirmPass = document.getElementById('confirm-admin-password').value;
+
+        if (newPass !== confirmPass) {
+          showToast('Passwords do not match. Please re-enter.');
+          return;
+        }
+
+        activeAdminHash = computePasswordHash(newPass);
+        try {
+          localStorage.setItem(ADMIN_HASH_STORAGE_KEY, activeAdminHash);
+        } catch (err) {
+          // Ignore storage error
+        }
+
+        document.getElementById('new-admin-password').value = '';
+        document.getElementById('confirm-admin-password').value = '';
+        showToast('Admin password updated! Export HTML to bake into standalone file.');
+      });
+
+      // Export Standalone HTML with Baked State & Password Hash
+      document.getElementById('export-standalone-btn').addEventListener('click', () => {
+        try {
+          // Clone current HTML document cleanly
+          const clonedDoc = document.documentElement.cloneNode(true);
+
+          // Ensure exported file always opens in pure guest mode from the closed Wax Seal cover
+          const coverOverlay = clonedDoc.querySelector('#entrance-overlay');
+          if (coverOverlay) coverOverlay.classList.remove('opened');
+
+          const pill = clonedDoc.querySelector('#admin-active-pill');
+          if (pill) {
+            pill.classList.add('hidden');
+            pill.classList.remove('flex');
+          }
+
+          const studio = clonedDoc.querySelector('#admin-studio-drawer');
+          if (studio) {
+            studio.classList.add('hidden');
+            studio.classList.remove('flex');
+          }
+
+          const loginModal = clonedDoc.querySelector('#admin-login-modal');
+          if (loginModal) {
+            loginModal.classList.add('hidden');
+            loginModal.classList.remove('flex');
+          }
+
+          // Reset scratch canvases so gold foil is intact on exported file
+          clonedDoc.querySelectorAll('.scratch-canvas').forEach((c) => c.classList.remove('revealed'));
+          ['mehndi', 'barat', 'walima'].forEach((ev) => {
+            const b = clonedDoc.querySelector(`#badge-${ev}`);
+            if (b) b.classList.add('hidden');
+          });
+
+          const bakedState = {
+            ...invitationState,
+            guest: defaultState.guest
+          };
+
+          const configReplacement =
+            `/* === EXPORT_CONFIG_START === */\n` +
+            `      const defaultState = ${JSON.stringify(bakedState, null, 8)};\n` +
+            `      const BAKED_ADMIN_HASH = ${JSON.stringify(activeAdminHash)};\n` +
+            `      /* === EXPORT_CONFIG_END === */`;
+
+          let fullHtml = '<!DOCTYPE html>\n' + clonedDoc.outerHTML;
+          fullHtml = fullHtml.replace(
+            /\/\* === EXPORT_CONFIG_START === \*\/[\s\S]*?\/\* === EXPORT_CONFIG_END === \*\//,
+            configReplacement
+          );
+
+          const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+          const downloadUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = downloadUrl;
+          a.download = 'index.html';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(downloadUrl);
+
+          showToast('Standalone index.html exported with your latest edits & password!');
+        } catch (err) {
+          showToast('Could not export HTML file in this browser.');
+        }
+      });
+
+      /* -------------------------------------------------------------------
+       * 10. INITIALIZATION ON WINDOW LOAD & RESIZE
+       * ------------------------------------------------------------------- */
+      window.addEventListener('resize', () => {
+        resizeOverlayCanvases();
+        initAllScratchCards();
+      });
+
+      window.addEventListener('load', () => {
+        renderInvitationContent();
+        renderBlessingsWall();
+        resizeOverlayCanvases();
+        initAllScratchCards();
+        animateParticles();
+        checkSecretUrlTrigger();
+      });
+    })();
+  </script>
+</body>
+</html>
